@@ -1,0 +1,24 @@
+{
+    "event_begin_date": "2024/11/4",
+    "event_end_date": "2024/11/18",
+    "event_times": [
+        "21:00〜",
+        "22:00〜",
+        "23:00〜",
+        "24:00〜"
+    ],
+    "selection_values": [
+        "○",
+        "×"
+    ],
+    "event_time_period": "10",
+    "team_max_count": "15",
+    "event_name": "機略戦",
+    "event_url": "http://www.asahi.com/",
+    "members": [
+        {"IGN": "samp1", "DiscordName": "samp_1", "Language": "JP"},
+        {"IGN": "samp2", "DiscordName": "samp_2", "Language": "EN"},
+        {"IGN": "samp3", "DiscordName": "samp_3", "Language": "TW"}
+    ]
+}
+
