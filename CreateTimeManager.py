@@ -5,6 +5,7 @@ from openpyxl.styles.borders import Border, Side
 from openpyxl.styles import Alignment
 from openpyxl.styles import PatternFill
 from openpyxl.styles import Font
+from openpyxl.formatting.rule import CellIsRule
 from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.datavalidation import DataValidation
 
@@ -51,7 +52,7 @@ def CreateHeader(ws):
 	col = 1
 	count = int(setting['team_max_count'])
 	cell = CreateCommonCell(ws, row, col)
-	cell.value = f'Number of Units ({count}x{count})'
+	cell.value = f'Number of Units ({count}vs{count})'
 	ws.merge_cells('A3:C3')
 	
 	# current datetime
@@ -125,7 +126,7 @@ def CreateMemberList(ws):
 	cell = CreateCommonCell(ws, row, col)
 	cell.value = 'In Game Name'
 	cell.font = Font(bold=True)
-	ws.column_dimensions['A'].width = 20
+	ws.column_dimensions['A'].width = 25
 	
 	row = 5
 	col = 2
@@ -188,7 +189,11 @@ def CreateMemberSchedule(ws):
         ws.add_data_validation(dv)
 
       col += 1
-	
+
+  green_fill = PatternFill(bgColor='00FF00', fill_type='solid')
+  gray_fill = PatternFill(bgColor='7F7F7F', fill_type='solid')
+  ws.conditional_formatting.add('D6:ZZ199', CellIsRule(operator='equal', formula=['"○"'], fill=green_fill))
+  ws.conditional_formatting.add('D6:ZZ199', CellIsRule(operator='equal', formula=['"×"'], fill=gray_fill))
 
 wb = openpyxl.Workbook()
 try:
